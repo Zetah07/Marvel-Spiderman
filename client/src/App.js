@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import logo from '../assets/spiderman-logo.png';
+import NavBar from './components/NavBar';
+import { Route, Routes } from "react-router-dom";
+import Home from './pages/Home';
+import Series from './pages/WatchSeries/Series';
+import Movies from './pages/WatchMovies/Movies';
+
+
 
 function App() {
   return (
     <div className="App">
+      <NavBar />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={logo} alt='logo spiderman' />
       </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Series" element={ <Series />} />
+        <Route path="/Series/:id" element={<Series />} /> 
+        <Route path="*" element={<h1>404 - Not Found!</h1>} />
+        <Route path="/Movies" element ={<Movies />} />
+        <Route path="/Movies/:id" element={<Movies />} />
+      </Routes>
     </div>
   );
 }
